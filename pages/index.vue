@@ -8,6 +8,7 @@ console.log(
 );
 
 const links = computed(() => router.getRoutes()
+    .filter(({ name }) => !name?.toString().includes('component'))
     .map(({ path, name }) => ({ path, name }))
 );
 
