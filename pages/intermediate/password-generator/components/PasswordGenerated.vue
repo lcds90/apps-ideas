@@ -7,6 +7,7 @@
 <template>
 	<div class="h-96 overflow-y-auto shadow-md">
 		<the-table
+			id="table-passwords"
 			v-if="getPasswords.length"
 			:data="getPasswords"
 		>

@@ -5,17 +5,17 @@
 </script>
 
 <template>
-	<form @submit.prevent="store.generateNewPassoword">
+	<form id="form-generator" @submit.prevent="store.generateNewPassoword">
 		<div class="mb-6">
 			<label
-				for="number-input"
+				for="quantity"
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 				>Quantidade de senhas ({{ form.quantity }})</label
 			>
 			<input
 				v-model="form.quantity"
 				type="number"
-				id="number-input"
+				id="quantity"
 				aria-describedby="helper-text-explanation"
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 			/>
@@ -23,12 +23,12 @@
 
 		<div class="mb-6">
 			<label
-				for="default-range"
+				for="length"
 				class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 				>Tamanho da senha ({{ form.range }})</label
 			>
 			<input
-				id="default-range"
+				id="length"
 				type="range"
 				max="50"
 				min="6"
@@ -108,6 +108,7 @@
 		</section>
 		<button
 			type="submit"
+			id="submit"
 			:disabled="store.isFormInvalid"
 			:class="{
 				'dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300':

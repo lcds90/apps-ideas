@@ -10,8 +10,8 @@ export const usePasswordGeneratorStore = defineStore('password-generator', {
 				lowercase: true,
 				numbers: true,
 				symbols: true,
-			},
-		} as Record<string, any>,
+			} as Record<string, boolean>,
+		},
 		isGenerating: false,
 		newPasswords: {
 			range: 15,
@@ -62,7 +62,10 @@ export const usePasswordGeneratorStore = defineStore('password-generator', {
 
 			return state.newPasswords.passwords.map(passwordSternght);
 		},
-		isFormInvalid: (state) => !Object.values(state.form.include).some((option) => option),
+		isFormInvalid: (state) => !Object.values(state.form.include)
+			.some((option) => option)
+			|| state.form.quantity <= 0 
+			|| state.form.range <= 0,
 	},
 	actions: {
 		generateNewPassoword() {
@@ -70,7 +73,7 @@ export const usePasswordGeneratorStore = defineStore('password-generator', {
 			let initialPassword = '';
 
 			console.log('Generate new password');
-			console.log(this.form);
+			// console.log(this.form);
 			this.newPasswords.range = this.form.range;
 			this.newPasswords.passwords = this.generatePassword();
 			this.isGenerating = false;
