@@ -9,6 +9,14 @@
 			3: { label: 'Avançado', class: 'bg-red-100 text-red-700' },
 		}[props.tier];
 	});
+	const generateDescriptionWithTitle = (text: string) => {
+		const texts = text.split(':');
+
+		return {
+			label: texts.length ? texts[0] : text,
+			caption: texts.length ? texts[1] : text,
+		};
+	};
 
 	const isOpen = ref(false);
 </script>
@@ -48,24 +56,38 @@
 							</span>
 						</div>
 
-						<em class="mt-2 text-xs text-gray-400">{{
-							description
-						}}</em>
+						<em class="mt-2 text-xs text-gray-400">{{ description }}</em>
 					</header>
 				</template>
 				<template #default>
 					<article>
-						<h2>User stories</h2>
+						<h2 class="bg-gradient-to-l from-emerald-700 to-green-500 p-2 text-white rounded-md shadow-md mb-4 w-36 text-center self-center">User stories</h2>
 						<ul>
 							<li v-for="story in stories">
-								<input
-									type="checkbox"
-									:id="String(story.id)"
-									v-model="story.done"
-								/>
-								<label :for="String(story.id)">
-									{{ story.description }}
-								</label>
+								<div class="flex">
+									<div class="flex items-center h-5">
+										<input
+											:id="String(story.id)"
+											aria-describedby="helper-checkbox-text"
+											type="checkbox"
+											v-model="story.done"
+											class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+										/>
+									</div>
+									<div class="ms-2 text-sm">
+										<label
+											:for="String(story.id)"
+											class="font-medium text-gray-900 dark:text-gray-300"
+											>{{ generateDescriptionWithTitle(story.description).label }}</label
+										>
+										<p
+											id="helper-checkbox-text"
+											class="text-xs font-normal text-gray-500 dark:text-gray-300"
+										>
+											{{ generateDescriptionWithTitle(story.description).caption }}
+										</p>
+									</div>
+								</div>
 							</li>
 						</ul>
 					</article>
