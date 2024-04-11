@@ -7,7 +7,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@vueuse/nuxt',
 		'@hypernym/nuxt-gsap',
-		'@pinia/nuxt',
+    '@pinia/nuxt',
+    '@nuxt/test-utils/module'
 	],
 	gsap: {
 		composables: true,
