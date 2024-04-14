@@ -54,18 +54,18 @@ export const usePasswordGeneratorStore = defineStore('password-generator', {
 				strenght = Math.max(0, strenght);
 
 				return {
-					password,
-					strenght,
-					copy: password,
+					Senha: password,
+					Força: strenght,
+					Copiar: password,
 				};
 			};
 
 			return state.newPasswords.passwords.map(passwordSternght);
 		},
-		isFormInvalid: (state) => !Object.values(state.form.include)
-			.some((option) => option)
-			|| state.form.quantity <= 0 
-			|| state.form.range <= 0,
+		isFormInvalid: (state) =>
+			!Object.values(state.form.include).some((option) => option) ||
+			state.form.quantity <= 0 ||
+			state.form.range <= 0,
 	},
 	actions: {
 		generateNewPassoword() {

@@ -51,14 +51,14 @@
 	<the-project
 		:title="project.title"
 		:description="project.description"
-		:tier="2"
+		:tier="project.tier"
 		:stories="project.stories"
 	/>
 	<the-title
 		text-color="from-emerald-300 to-green-900"
 		title="Gerador de senhas"
 	/>
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-4">
 		<password-generator />
 		<password-generated />
 	</div>
